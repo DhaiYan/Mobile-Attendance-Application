@@ -32,13 +32,13 @@
 				</li>
 				<br>
 				<li>
-					<a href="index.html" title="Home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create</a>
+					<a href="cclass.html" title="Go to Class"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</a>
 				</li>
 				<li>
-					<a href="add.html" title="Event"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Read</a>
+					<a href="csubject.html" title="Go to Subject"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject</a>
 				</li>
 				<li>
-					<a href="contact.html" title="Guest"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update</a>
+					<a href="cstudent.html" title="Go to Student"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student</a>
 				</li>
 				<li>
 					<a href="edit.html" title="To-do-List"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</a>
@@ -62,7 +62,7 @@
 							<span class="glyphicon glyphicon-menu-hamburger"></span>
 							<span class="icon-bar"></span>                       
 							</button>
-							<a class="navbar-brand" onclick="openNav()"><span  class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;Take Attendance</a>
+							<a class="navbar-brand" onclick="openNav()"><span  class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;<strong>Mobile Attendance Application</strong></a>
 					</div>
 					
 					</div>
@@ -79,6 +79,25 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
+	<div class="container" style="width:300px">
+		<form method="post" action=""> 
+			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Class</font></strong></h1></center>
+			<label>Course, Year, and Section</label> 
+			<input type="text" class="form-control" id="cys" placeholder="Enter Course, Year, and Section" name="cys" required>
+			<label>Subject Code</label>
+			<input type="text" class="form-control" id="code" placeholder="Enter Subject Code" name="code" required>
+			<label>Description</label> 
+			<input type="text" class="form-control" id="description" placeholder="Enter Subject Description" name="description" required>
+			<label>Semester</label>
+			<select name="semester" class="form-control">
+			  <option value="Fisrt">First Semester</option>
+			  <option value="Second">Second Semester</option>
+			  <option value="Summer">Summer</option>
+			</select>
+			<br/>
+			<center><input class="btn btn-dark" type="submit" value="Save"></button></center>
+		</form>
+	</div>
 	
 
 
