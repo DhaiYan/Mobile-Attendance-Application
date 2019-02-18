@@ -32,7 +32,10 @@
 				</li>
 				<br>
 				<li>
-					<a href="cclass.html" title="Go to Class"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</a>
+					<a href="index.php" title="Go to Class"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
+				</li>
+				<li>
+					<a href="cclass.php" title="Go to Class"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</a>
 				</li>
 				<li>
 					<a href="csubject.html" title="Go to Subject"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject</a>
@@ -80,12 +83,12 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 	<div class="container" style="width:300px">
-		<form method="post" action=""> 
+		<form method="post" action="addsubject.php"> 
 			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Subject</font></strong></h1></center>
 			<label>Subject Code</label>
-			<input type="text" class="form-control" id="code" placeholder="Enter Subject Code" name="code" required>
-			<label>Description</label> 
-			<input type="text" class="form-control" id="description" placeholder="Enter Subject Description" name="description" required><br/>
+			<input type="text" class="form-control" id="subject_code" placeholder="Enter Subject Code" name="subject_code" required>
+			<label>Subject Title</label> 
+			<input type="text" class="form-control" id="subject_title" placeholder="Enter Subject Title" name="subject_title" required><br/>
 			<center><input class="btn btn-dark" type="submit" value="Save"></button></center>
 		</form>
 	</div>

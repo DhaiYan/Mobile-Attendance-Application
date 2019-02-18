@@ -1,9 +1,38 @@
+<?php
 
+$Host = '';
+$db = '';
+
+$db = mysqli_connect('localhost','root','','attendance');
+
+if(isset($_POST['update']))
+{
+	$id = $_POST['id'];
+	$subject_code = $_POST['subject_code'];
+	$subject_title = $_POST['subject_title'];
+	
+	$result = mysqli_query($db, "UPDATE subject SET subject_code='$subject_code', subject_title='$subject_title' WHERE subject_code='$id'");
+	if($result == true){
+		header("Location: index.php");
+	}
+}
+?>
+<?php
+$subject_code = $_GET['subject_code'];
+
+$result = mysqli_query($db, "SELECT * FROM subject WHERE subject_code='$subject_code'");
+
+while($res = mysqli_fetch_array($result))
+{
+	$subject_code = $res['subject_code'];
+	$subject_title = $res['subject_title'];
+}
+?>
 <!DOCTYPE html>
 
 
 <head>
-	<title>Add</title>
+	<title>subject</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/x-icon" href="picture/attendance.jpg" />
@@ -83,28 +112,14 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 	<div class="container" style="width:300px">
-		<form method="post" action="addstudent.php"> 
-			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student</font></strong></h1></center>
-			<label>ID Number</label> 
-			<input type="text" class="form-control" id="id_number" placeholder="Enter ID Number" name="id_number" required>
-			<label>First Name</label>
-			<input type="text" class="form-control" id="first_name" placeholder="Enter First Name" name="first_name" required>
-			<label>Middle Initial</label> 
-			<input type="text" class="form-control" id="middle_initial" placeholder="Enter Middle Initial" name="middle_initial">
-			<label>Last Name</label>
-			<input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" name="last_name" required>
-			<label>Name Extension</label>
-			<select name="name_extension" class="form-control">
-			  <option value=""></option>
-			  <option value="Junior">Jr.</option>
-			  <option value="Senior">Sr.</option>
-			  <option value="I">I</option>
-			  <option value="II">II</option>
-			  <option value="III">III</option>
-			  <option value="Other">Other...</option>
-			</select>
-			<br/>
-			<center><input class="btn btn-dark" type="submit" value="Save"></button></center>
+		<form method="post" action=""> 
+		<input name="id" type="hidden" value="<?php echo $subject_code;?>"/>
+			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Subject</font></strong></h1></center>
+			<label>Subject Code</label>
+			<input type="text" class="form-control" value="<?php echo $subject_code;?>" id="subject_code" placeholder="Enter Subject Code" name="subject_code" required>
+			<label>Subject Title</label> 
+			<input type="text" class="form-control" value="<?php echo $subject_title;?>" id="subject_title" placeholder="Enter Subject Title" name="subject_title" required><br/>
+			<center><input class="btn btn-dark" name="update" type="submit" value="Save"></button></center>
 		</form>
 	</div>
 	

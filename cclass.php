@@ -1,3 +1,18 @@
+<?php 
+
+$host = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "attendance";
+
+// Create connection
+$conn = new mysqli ($host, $dbusername, $dbpassword, $dbname);
+
+$sql = "SELECT * FROM subject";
+$query = mysqli_query($conn,$sql);
+
+
+?>
 
 <!DOCTYPE html>
 
@@ -32,7 +47,10 @@
 				</li>
 				<br>
 				<li>
-					<a href="cclass.html" title="Go to Class"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</a>
+					<a href="index.php" title="Go to Class"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
+				</li>
+				<li>
+					<a href="cclass.php" title="Go to Class"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</a>
 				</li>
 				<li>
 					<a href="csubject.html" title="Go to Subject"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject</a>
@@ -80,20 +98,28 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 	<div class="container" style="width:300px">
-		<form method="post" action=""> 
+		<form method="post" action="addclass.php"> 
 			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Class</font></strong></h1></center>
 			<label>Course, Year, and Section</label> 
 			<input type="text" class="form-control" id="cys" placeholder="Enter Course, Year, and Section" name="cys" required>
 			<label>Subject Code</label>
-			<input type="text" class="form-control" id="code" placeholder="Enter Subject Code" name="code" required>
-			<label>Description</label> 
-			<input type="text" class="form-control" id="description" placeholder="Enter Subject Description" name="description" required>
-			<label>Semester</label>
-			<select name="semester" class="form-control">
-			  <option value="Fisrt">First Semester</option>
-			  <option value="Second">Second Semester</option>
-			  <option value="Summer">Summer</option>
+			<select name="subject_code" class="form-control" required>
+					<?php while($row = mysqli_fetch_array($query)):?>
+			  <option value="<?php echo $row['subject_code'] ?>"><?php echo $row['subject_title'] ?></option>
+			  	  <?php endwhile;?>
 			</select>
+			<label>Semester</label>
+			<select name="semester" class="form-control" required>
+			  <option value="1">First Semester</option>
+			  <option value="2">Second Semester</option>
+			  <option value="3">Summer</option>
+			</select>
+			<label>Academic Year</label> 
+			<input type="text" class="form-control" id="academic_year" placeholder="Enter Subject Description" name="academic_year" required>
+			<label>Schedule Day</label> 
+			<input type="text" class="form-control" id="schedule_day" placeholder="Enter Subject Description" name="schedule_day" required>
+			<label>Schedule Time</label> 
+			<input type="text" class="form-control" id="schedule_time" placeholder="Enter Subject Description" name="schedule_time" required>
 			<br/>
 			<center><input class="btn btn-dark" type="submit" value="Save"></button></center>
 		</form>

@@ -1,4 +1,27 @@
+<?php
 
+	if(isset($_POST['btn_search']))
+	{
+    $search = $_POST['search'];
+		// search in all table columns
+		// using concat mysql function
+		$query = "SELECT * FROM `subject` WHERE CONCAT(`subject_code`, `subject_title`) LIKE '%".$search."%'";
+		$search_result = filterTable($query);
+    
+	}
+	else {
+		$query = "SELECT * FROM `subject`";
+		$search_result = filterTable($query);
+	}
+
+	// function to connect and execute the query
+	function filterTable($query)
+	{
+		$connect = mysqli_connect("localhost", "root", "", "attendance");
+		$filter_Result = mysqli_query($connect, $query);
+		return $filter_Result;
+	}
+?>
 <!DOCTYPE html>
 
 
@@ -32,7 +55,10 @@
 				</li>
 				<br>
 				<li>
-					<a href="cclass.html" title="Go to Class"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</a>
+					<a href="index.php" title="Go to Class"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
+				</li>
+				<li>
+					<a href="cclass.php" title="Go to Class"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</a>
 				</li>
 				<li>
 					<a href="csubject.html" title="Go to Subject"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject</a>
@@ -79,12 +105,41 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
-	<?php
-	$code=$POST['code'];
-	$description=$POST['description'];
+	<div class="container">
+			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Subject</font></strong></h1></center>
+			<div class="container">          
+  <table class="table">
+    <thead>
+      <tr>
+		<th>Subject_Code:</th>
+        <th>Subject_Title:</th>
+		<th>Action:</th>	
+      </tr>
+    </thead>
+	<?php while($row = mysqli_fetch_array($search_result)):?>
+    <tbody>
+      <tr>
+        <td><?php echo $row['subject_code'];?></td>
+		<td><?php echo $row['subject_title'];?></td>
+		<td><div class="btn-group" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="False">
+      Dropdown
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" href="delete.php?subject_code=<?php echo $row["subject_code"]; ?>">Delete</a>
+      <a class="dropdown-item" href="edit.php?subject_code=<?php echo $row["subject_code"]; ?>">Update</a>
+    </div>
+  </div></td>
+        
+      </tr>
+	  </tbody>
+	  <?php endwhile;?>
+	 </table>
+	</div>	
+	</div>
 	
-	echo 
-	?>
+	
+	
 	
 </body>
 
