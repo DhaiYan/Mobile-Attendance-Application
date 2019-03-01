@@ -23,7 +23,11 @@ else{
   $sql = "INSERT INTO student (id_number, first_name, middle_initial, last_name, name_extension)
   values ('$id_number','$first_name','$middle_initial','$last_name','$name_extension')";
   if ($conn->query($sql)){
+<<<<<<< HEAD
     header("location: index.php");
+=======
+    header("location: cstudent.php");
+>>>>>>> updated
   }
   else{
     echo "Error: ". $sql ."

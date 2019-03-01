@@ -4,12 +4,8 @@
 	if (mysqli_connect_errno()) {
 		echo "Failedto connect to MySQL: " . mysqli_connect_error();
 	}
-	$subject_code = $_GET['subject_code'];
-	$query = "DELETE FROM subject where subject_code='$subject_code'";
+	$id_number = $_GET['id_number'];
+	$query = "DELETE FROM student where id_number='$id_number'";
 	$result = mysqli_query($con,$query) or die (mysqli_error());
-<<<<<<< HEAD
-	header("location: index.php");
-=======
-	header("location: csubject.php");
->>>>>>> updated
+	header("location: cstudent.php");
 ?>

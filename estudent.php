@@ -1,9 +1,44 @@
+<?php
 
+$Host = '';
+$db = '';
+
+$db = mysqli_connect('localhost','root','','attendance');
+
+if(isset($_POST['update']))
+{
+	$id = $_POST['id'];
+	$id_number = $_POST['id_number'];
+	$first_name = $_POST['first_name'];
+	$middle_initial = $_POST['middle_initial'];
+	$last_name = $_POST['last_name'];
+	$name_extension = $_POST['name_extension'];
+	
+	$result = mysqli_query($db, "UPDATE student SET id_number='$id_number', first_name='$first_name',middle_initial='$middle_initial', last_name='$last_name', name_extension='$name_extension' WHERE id_number='$id'");
+	if($result == true){
+		header("Location: cstudent.php");
+	}
+}
+?>
+<?php
+$id_number = $_GET['id_number'];
+
+$result = mysqli_query($db, "SELECT * FROM student WHERE id_number='$id_number'");
+
+while($res = mysqli_fetch_array($result))
+{
+	$id_number = $res['id_number'];
+	$first_name = $res['first_name'];
+	$middle_initial = $res['middle_initial'];
+	$last_name = $res['last_name'];
+	$name_extension = $res['name_extension'];
+}
+?>
 <!DOCTYPE html>
 
 
 <head>
-	<title>Add</title>
+	<title>subject</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/x-icon" href="picture/attendance.jpg" />
@@ -38,10 +73,10 @@
 					<a href="cclass.php" title="Go to Class"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</a>
 				</li>
 				<li>
-					<a href="csubject.html" title="Go to Subject"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject</a>
+					<a href="csubject.php" title="Go to Subject"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject</a>
 				</li>
 				<li>
-					<a href="cstudent.html" title="Go to Student"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student</a>
+					<a href="cstudent.php" title="Go to Student"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student</a>
 				</li>
 				<li>
 					<a href="edit.html" title="To-do-List"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</a>
@@ -83,18 +118,19 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 	<div class="container" style="width:300px">
-		<form method="post" action="addstudent.php"> 
+		<form method="post" action="estudent.php"> 
+		<input name="id" type="hidden" value="<?php echo $id_number;?>"/>
 			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student</font></strong></h1></center>
 			<label>ID Number</label> 
-			<input type="text" class="form-control" id="id_number" placeholder="Enter ID Number" name="id_number" required>
+			<input type="text" class="form-control" value="<?php echo $id_number;?>" id="id_number" placeholder="Enter ID Number" name="id_number" required>
 			<label>First Name</label>
-			<input type="text" class="form-control" id="first_name" placeholder="Enter First Name" name="first_name" required>
+			<input type="text" class="form-control" value="<?php echo $first_name;?>" id="first_name" placeholder="Enter First Name" name="first_name" required>
 			<label>Middle Initial</label> 
-			<input type="text" class="form-control" id="middle_initial" placeholder="Enter Middle Initial" name="middle_initial">
+			<input type="text" class="form-control" value="<?php echo $middle_initial;?>" id="middle_initial" placeholder="Enter Middle Initial" name="middle_initial">
 			<label>Last Name</label>
-			<input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" name="last_name" required>
+			<input type="text" class="form-control" value="<?php echo $last_name;?>" id="last_name" placeholder="Enter Last Name" name="last_name" required>
 			<label>Name Extension</label>
-			<select name="name_extension" class="form-control">
+			<select name="name_extension" class="form-control" >
 			  <option value=""></option>
 			  <option value="Junior">Jr.</option>
 			  <option value="Senior">Sr.</option>
@@ -103,12 +139,10 @@
 			  <option value="III">III</option>
 			  <option value="Other">Other...</option>
 			</select>
-			<br/>
-			<center><input class="btn btn-dark" type="submit" value="Save"></button></center>
+			<center><input class="btn btn-dark" name="update" type="submit" value="Save"></button></center>
 		</form>
 	</div>
 	
-
 
 </body>
 
