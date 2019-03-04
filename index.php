@@ -5,12 +5,12 @@
     $search = $_POST['search'];
 		// search in all table columns
 		// using concat mysql function
-		$query = "SELECT * FROM `student` WHERE CONCAT(`id_number`, `first_name`, `middle_initial`, `last_name`, `name_extension`) LIKE '%".$search."%'";
+		$query = "SELECT * FROM `class` WHERE CONCAT(`class_id`, `section`, `subject_code`, `semester`, `academic_year`, `schedule_day`, `schedule_time`) LIKE '%".$search."%'";
 		$search_result = filterTable($query);
     
 	}
 	else {
-		$query = "SELECT * FROM `student`";
+		$query = "SELECT * FROM `class`";
 		$search_result = filterTable($query);
 	}
 
@@ -26,7 +26,7 @@
 
 
 <head>
-	<title>Add</title>
+	<title>index</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/x-icon" href="picture/attendance.jpg" />
@@ -99,79 +99,46 @@
         </div>
 
     </div>
-    
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	
-	<div class="container" style="width:300px">
-		<form method="post" action="addstudent.php"> 
-			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student</font></strong></h1></center>
-			<label>ID Number</label> 
-			<input type="text" class="form-control" id="id_number" placeholder="Enter ID Number" name="id_number" required>
-			<label>First Name</label>
-			<input type="text" class="form-control" id="first_name" placeholder="Enter First Name" name="first_name" required>
-			<label>Middle Initial</label> 
-			<input type="text" class="form-control" id="middle_initial" placeholder="Enter Middle Initial" name="middle_initial">
-			<label>Last Name</label>
-			<input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" name="last_name" required>
-			<label>Name Extension</label>
-			<select name="name_extension" class="form-control">
-			  <option value=""></option>
-			  <option value="Junior">Jr.</option>
-			  <option value="Senior">Sr.</option>
-			  <option value="I">I</option>
-			  <option value="II">II</option>
-			  <option value="III">III</option>
-			  <option value="Other">Other...</option>
-			</select>
-			<br/>
-			<center><input class="btn btn-dark" type="submit" value="Save"></button></center>
-		</form>
-	</div>
 	
 	<div class="container">
-			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student</font></strong></h1></center>
+			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Class</font></strong></h1></center>
 			<div class="container">          
   <table class="table">
     <thead>
       <tr>
-		<th>ID Number:</th>
-        <th>First Name:</th>
-		<th>Middle Initial:</th>
-        <th>Last Name:</th>
-		<th>Name Extension:</th>
-		<th>Action:</th>	
+		<th>Class_ID:</th>
+        <th>Course, Year, and Section:</th>
+		<th>Subject_Code:</th>
+		<th>Semester:</th>
+        <th>Academic_Year:</th>
+		<th>Schedule_Day:</th>
+		<th>Schedule_Time:</th>
       </tr>
     </thead>
 	<?php while($row = mysqli_fetch_array($search_result)):?>
     <tbody>
       <tr>
-        <td><?php echo $row['id_number'];?></td>
-		<td><?php echo $row['first_name'];?></td>
-		<td><?php echo $row['middle_initial'];?></td>
-		<td><?php echo $row['last_name'];?></td>
-		<td><?php echo $row['name_extension'];?></td>
-		<td><div class="btn-group" role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="False">
-      Dropdown
-    </button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="dstudent.php?id_number=<?php echo $row["id_number"]; ?>">Delete</a>
-      <a class="dropdown-item" href="estudent.php?id_number=<?php echo $row["id_number"]; ?>">Update</a>
-    </div>
-  </div></td>
-        
+        <td><?php echo $row['class_id'];?></td>
+		<td><?php echo $row['section'];?></td>
+		<td><?php echo $row['subject_code'];?></td>
+		<td><?php echo $row['semester'];?></td>
+		<td><?php echo $row['academic_year'];?></td>
+		<td><?php echo $row['schedule_day'];?></td>
+		<td><?php echo $row['schedule_time'];?></td>
       </tr>
 	  </tbody>
 	  <?php endwhile;?>
 	 </table>
 	</div>	
 	</div>
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
-
-
+	
+	
 </body>
 
 </html>

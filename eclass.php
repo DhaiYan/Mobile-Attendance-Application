@@ -30,7 +30,11 @@ if(isset($_POST['update']))
 	$schedule_day = $_POST['schedule_day'];
 	$schedule_time = $_POST['schedule_time'];
 	
+<<<<<<< HEAD
 	$result = mysqli_query($db, "UPDATE class SET class_id='$class_id', section='$section', subject_code='$subject_code', semester='$semester', academic_year='$academic_year', schedule_day='$schedule_day', schedule_time='$schedule_time' WHERE class_id='$class_id'");
+=======
+	$result = mysqli_query($db, "UPDATE class SET section='$section', subject_code='$subject_code', semester='$semester', academic_year='$academic_year', schedule_day='$schedule_day', schedule_time='$schedule_time' WHERE class_id='$class_id'");
+>>>>>>> CRUD for student_class and take_attendance
 	if($result == true){
 		header("Location: cclass.php");
 	}
@@ -100,6 +104,7 @@ while($res = mysqli_fetch_array($result))
 					<a href="csubject.php" title="Go to Subject"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject</a>
 				</li>
 				<li>
+<<<<<<< HEAD
 					<a href="cstudent.html" title="Go to Student"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student</a>
 				</li>
 				<li>
@@ -107,6 +112,15 @@ while($res = mysqli_fetch_array($result))
 				</li>
 				<li>
 					<a href="edit.html" title="To-do-List"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a>
+=======
+					<a href="cstudent.php" title="Go to Student"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student</a>
+				</li>
+				<li>
+					<a href="student_class.php" title="To-do-List"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student_Class</a>
+				</li>
+				<li>
+					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Take_Attendance</a>
+>>>>>>> CRUD for student_class and take_attendance
 				</li>
 				
 			</ul>
@@ -145,8 +159,11 @@ while($res = mysqli_fetch_array($result))
 		<form method="post" action="eclass.php"> 
 		<input name="class_id" type="hidden" value="<?php echo $class_id;?>"/>
 			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Class</font></strong></h1></center>
+<<<<<<< HEAD
 			<label>Class ID</label> 
 			<input type="number" class="form-control" value="<?php echo $class_id;?>" id="class_id" placeholder="Enter Class ID" name="class_id" required>
+=======
+>>>>>>> CRUD for student_class and take_attendance
 			<label>Course, Year, and Section</label> 
 			<input type="text" class="form-control" value="<?php echo $section;?>" id="section" placeholder="Enter Course, Year, and Section" name="section" required>
 			<label>Subject Code</label>
@@ -157,9 +174,15 @@ while($res = mysqli_fetch_array($result))
 			</select>
 			<label>Semester</label>
 			<select name="semester" class="form-control" required>
+<<<<<<< HEAD
 			  <option value="1">First Semester</option>
 			  <option value="2">Second Semester</option>
 			  <option value="3">Summer</option>
+=======
+			  <option value="First Semester">First Semester</option>
+			  <option value="Second Semester">Second Semester</option>
+			  <option value="Summer">Summer</option>
+>>>>>>> CRUD for student_class and take_attendance
 			</select>
 			<label>Academic Year</label> 
 			<input type="text" class="form-control" value="<?php echo $academic_year;?>" id="academic_year" placeholder="Enter Academic Year" name="academic_year" required>

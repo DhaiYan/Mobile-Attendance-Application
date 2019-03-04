@@ -20,10 +20,14 @@ else{
   values ('$subject_code','$subject_title')";
   if ($conn->query($sql)){
 <<<<<<< HEAD
+<<<<<<< HEAD
     header("location: index.php");
 =======
     header("location: csubject.php");
 >>>>>>> updated
+=======
+    header("location: csubject.php");
+>>>>>>> CRUD for student_class and take_attendance
   }
   else{
     echo "Error: ". $sql ."

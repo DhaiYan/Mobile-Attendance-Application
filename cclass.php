@@ -1,3 +1,18 @@
+<?php 
+
+$host = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "attendance";
+
+// Create connection
+$conn = new mysqli ($host, $dbusername, $dbpassword, $dbname);
+
+$sql = "SELECT * FROM subject";
+$query1 = mysqli_query($conn,$sql);
+
+
+?>
 <?php
 
 	if(isset($_POST['btn_search']))
@@ -5,12 +20,12 @@
     $search = $_POST['search'];
 		// search in all table columns
 		// using concat mysql function
-		$query = "SELECT * FROM `student` WHERE CONCAT(`id_number`, `first_name`, `middle_initial`, `last_name`, `name_extension`) LIKE '%".$search."%'";
+		$query = "SELECT * FROM `class` WHERE CONCAT(`class_id`, `section`, `subject_code`, `semester`, `academic_year`, `schedule_day`, `schedule_time`) LIKE '%".$search."%'";
 		$search_result = filterTable($query);
     
 	}
 	else {
-		$query = "SELECT * FROM `student`";
+		$query = "SELECT * FROM `class`";
 		$search_result = filterTable($query);
 	}
 
@@ -22,6 +37,7 @@
 		return $filter_Result;
 	}
 ?>
+
 <!DOCTYPE html>
 
 
@@ -106,63 +122,67 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 	<div class="container" style="width:300px">
-		<form method="post" action="addstudent.php"> 
-			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student</font></strong></h1></center>
-			<label>ID Number</label> 
-			<input type="text" class="form-control" id="id_number" placeholder="Enter ID Number" name="id_number" required>
-			<label>First Name</label>
-			<input type="text" class="form-control" id="first_name" placeholder="Enter First Name" name="first_name" required>
-			<label>Middle Initial</label> 
-			<input type="text" class="form-control" id="middle_initial" placeholder="Enter Middle Initial" name="middle_initial">
-			<label>Last Name</label>
-			<input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" name="last_name" required>
-			<label>Name Extension</label>
-			<select name="name_extension" class="form-control">
-			  <option value=""></option>
-			  <option value="Junior">Jr.</option>
-			  <option value="Senior">Sr.</option>
-			  <option value="I">I</option>
-			  <option value="II">II</option>
-			  <option value="III">III</option>
-			  <option value="Other">Other...</option>
+		<form method="post" action="addclass.php"> 
+			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Class</font></strong></h1></center>
+			<label>Course, Year, and Section</label> 
+			<input type="text" class="form-control" placeholder="Enter Course, Year, and Section" name="section" required>
+			<label>Subject Code</label>
+			<select name="subject_code" class="form-control" required>
+					<?php while($row = mysqli_fetch_array($query1)):?>
+			  <option value="<?php echo $row['subject_code'] ?>"><?php echo $row['subject_title'] ?></option>
+			  	  <?php endwhile;?>
 			</select>
+			<label>Semester</label>
+			<select name="semester" class="form-control" required>
+			  <option value="First Semester">First Semester</option>
+			  <option value="Second Semester">Second Semester</option>
+			  <option value="Summer">Summer</option>
+			</select>
+			<label>Academic Year</label> 
+			<input type="text" class="form-control" id="academic_year" placeholder="Enter Academic Year" name="academic_year" required>
+			<label>Schedule Day</label> 
+			<input type="text" class="form-control" id="schedule_day" placeholder="Enter Schedule Day" name="schedule_day" required>
+			<label>Schedule Time</label> 
+			<input type="text" class="form-control" id="schedule_time" placeholder="Enter Schedule Time" name="schedule_time" required>
 			<br/>
 			<center><input class="btn btn-dark" type="submit" value="Save"></button></center>
 		</form>
 	</div>
 	
 	<div class="container">
-			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student</font></strong></h1></center>
+			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Class</font></strong></h1></center>
 			<div class="container">          
   <table class="table">
     <thead>
       <tr>
-		<th>ID Number:</th>
-        <th>First Name:</th>
-		<th>Middle Initial:</th>
-        <th>Last Name:</th>
-		<th>Name Extension:</th>
-		<th>Action:</th>	
+		<th>Class_ID:</th>
+        <th>Course, Year, and Section:</th>
+		<th>Subject_Code:</th>
+		<th>Semester:</th>
+        <th>Academic_Year:</th>
+		<th>Schedule_Day:</th>
+		<th>Schedule_Time:</th>
       </tr>
     </thead>
 	<?php while($row = mysqli_fetch_array($search_result)):?>
     <tbody>
       <tr>
-        <td><?php echo $row['id_number'];?></td>
-		<td><?php echo $row['first_name'];?></td>
-		<td><?php echo $row['middle_initial'];?></td>
-		<td><?php echo $row['last_name'];?></td>
-		<td><?php echo $row['name_extension'];?></td>
+        <td><?php echo $row['class_id'];?></td>
+		<td><?php echo $row['section'];?></td>
+		<td><?php echo $row['subject_code'];?></td>
+		<td><?php echo $row['semester'];?></td>
+		<td><?php echo $row['academic_year'];?></td>
+		<td><?php echo $row['schedule_day'];?></td>
+		<td><?php echo $row['schedule_time'];?></td>
 		<td><div class="btn-group" role="group">
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="False">
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="dstudent.php?id_number=<?php echo $row["id_number"]; ?>">Delete</a>
-      <a class="dropdown-item" href="estudent.php?id_number=<?php echo $row["id_number"]; ?>">Update</a>
+      <a class="dropdown-item" href="dclass.php?class_id=<?php echo $row["class_id"]; ?>">Delete</a>
+      <a class="dropdown-item" href="eclass.php?class_id=<?php echo $row["class_id"]; ?>">Update</a>
     </div>
   </div></td>
-        
       </tr>
 	  </tbody>
 	  <?php endwhile;?>

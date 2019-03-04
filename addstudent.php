@@ -24,10 +24,14 @@ else{
   values ('$id_number','$first_name','$middle_initial','$last_name','$name_extension')";
   if ($conn->query($sql)){
 <<<<<<< HEAD
+<<<<<<< HEAD
     header("location: index.php");
 =======
     header("location: cstudent.php");
 >>>>>>> updated
+=======
+    header("location: cstudent.php");
+>>>>>>> CRUD for student_class and take_attendance
   }
   else{
     echo "Error: ". $sql ."
