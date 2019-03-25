@@ -21,6 +21,7 @@ else{
   if ($conn->query($sql)){
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     header("location: index.php");
 =======
     header("location: csubject.php");
@@ -28,6 +29,9 @@ else{
 =======
     header("location: csubject.php");
 >>>>>>> CRUD for student_class and take_attendance
+=======
+    header("location: csubject.php");
+>>>>>>> Updated
   }
   else{
     echo "Error: ". $sql ."

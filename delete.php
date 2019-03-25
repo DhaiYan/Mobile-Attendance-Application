@@ -9,6 +9,7 @@
 	$result = mysqli_query($con,$query) or die (mysqli_error());
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	header("location: index.php");
 =======
 	header("location: csubject.php");
@@ -16,4 +17,7 @@
 =======
 	header("location: csubject.php");
 >>>>>>> CRUD for student_class and take_attendance
+=======
+	header("location: csubject.php");
+>>>>>>> Updated
 ?>

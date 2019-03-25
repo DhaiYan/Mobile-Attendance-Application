@@ -80,6 +80,7 @@ while($res = mysqli_fetch_array($result))
 				</li>
 				<li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<a href="edit.html" title="To-do-List"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</a>
 				</li>
 				<li>
@@ -90,6 +91,18 @@ while($res = mysqli_fetch_array($result))
 				<li>
 					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Take_Attendance</a>
 >>>>>>> CRUD for student_class and take_attendance
+=======
+					<a href="student_class.php" title="To-do-List"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student_Class</a>
+				</li>
+				<li>
+					<a href="take_attendance.php" title="To-do-List"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Take_Attendance</a>
+				</li>
+				<li>
+					<a href="general_reports.php" title="To-do-List"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;General Reports</a>
+				</li>
+				<li>
+					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a>
+>>>>>>> Updated
 				</li>
 				
 			</ul>

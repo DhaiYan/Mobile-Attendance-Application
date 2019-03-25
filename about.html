@@ -1,27 +1,3 @@
-<?php
-
-	if(isset($_POST['btn_search']))
-	{
-    $search = $_POST['search'];
-		// search in all table columns
-		// using concat mysql function
-		$query = "SELECT * FROM `class` WHERE CONCAT(`class_id`, `section`, `subject_code`, `semester`, `academic_year`, `schedule_day`, `schedule_time`) LIKE '%".$search."%'";
-		$search_result = filterTable($query);
-    
-	}
-	else {
-		$query = "SELECT * FROM `class`";
-		$search_result = filterTable($query);
-	}
-
-	// function to connect and execute the query
-	function filterTable($query)
-	{
-		$connect = mysqli_connect("localhost", "root", "", "attendance");
-		$filter_Result = mysqli_query($connect, $query);
-		return $filter_Result;
-	}
-?>
 <!DOCTYPE html>
 
 
@@ -70,17 +46,13 @@
 					<a href="student_class.php" title="To-do-List"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student_Class</a>
 				</li>
 				<li>
-<<<<<<< HEAD
 					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Take_Attendance</a>
-=======
-					<a href="take_attendance.php" title="To-do-List"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Take_Attendance</a>
 				</li>
 				<li>
 					<a href="general_reports.php" title="To-do-List"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;General Reports</a>
 				</li>
 				<li>
 					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a>
->>>>>>> Updated
 				</li>
 				
 			</ul>
@@ -111,35 +83,11 @@
     </div>
 	
 	<div class="container">
-			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Class</font></strong></h1></center>
-			<div class="container">          
-  <table class="table">
-    <thead>
-      <tr>
-		<th>Class_ID:</th>
-        <th>Course, Year, and Section:</th>
-		<th>Subject_Code:</th>
-		<th>Semester:</th>
-        <th>Academic_Year:</th>
-		<th>Schedule_Day:</th>
-		<th>Schedule_Time:</th>
-      </tr>
-    </thead>
-	<?php while($row = mysqli_fetch_array($search_result)):?>
-    <tbody>
-      <tr>
-        <td><?php echo $row['class_id'];?></td>
-		<td><?php echo $row['section'];?></td>
-		<td><?php echo $row['subject_code'];?></td>
-		<td><?php echo $row['semester'];?></td>
-		<td><?php echo $row['academic_year'];?></td>
-		<td><?php echo $row['schedule_day'];?></td>
-		<td><?php echo $row['schedule_time'];?></td>
-      </tr>
-	  </tbody>
-	  <?php endwhile;?>
-	 </table>
-	</div>	
+			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">About The Developer</font></strong></h1></center>
+			<p>In high school, I was that kid that seemed to never be paying attention of being late. Supposedly in my butt in one corner, out of the world. Things never change ... I'm no longer in high school though.</p>
+			<p>After high school I originally had no idea of taking IT. Probably the nearest university. I don't like teaching though , what should I do?</p>
+			<p>I do this app because I have no choice, like I do have but I don't wish for a miscarried grade. I find the industry heavy. I like the people I meet, the bond we make. I like to make the web a better place. Hopefully we cross paths in the real world oneday and we can make it a better place together.</p>
+			<p><i>"Life's tragedy is that we get old too soon and wise too late."</i> - Benjamin Franklin</p>
 	</div>
     
 

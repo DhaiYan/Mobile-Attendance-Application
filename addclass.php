@@ -1,6 +1,7 @@
 <?php
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 $cys = filter_input(INPUT_POST, 'cys');
 =======
 $section = filter_input(INPUT_POST, 'section');
@@ -8,11 +9,15 @@ $section = filter_input(INPUT_POST, 'section');
 =======
 $section = filter_input(INPUT_POST, 'section');
 >>>>>>> CRUD for student_class and take_attendance
+=======
+$section = filter_input(INPUT_POST, 'section');
+>>>>>>> Updated
 $subject_code = filter_input(INPUT_POST, 'subject_code');
 $semester = filter_input(INPUT_POST, 'semester');
 $academic_year = filter_input(INPUT_POST, 'academic_year');
 $schedule_day = filter_input(INPUT_POST, 'schedule_day');
 $schedule_time = filter_input(INPUT_POST, 'schedule_time');
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 if (!empty($cys)){
@@ -22,6 +27,9 @@ if (!empty($section)){
 =======
 if (!empty($section)){
 >>>>>>> CRUD for student_class and take_attendance
+=======
+if (!empty($section)){
+>>>>>>> Updated
 	if (!empty($subject_code)){
 		if (!empty($semester)){
 			if (!empty($academic_year)){
@@ -43,6 +51,7 @@ else{
   $sql = "INSERT INTO class (section, subject_code, semester, academic_year, schedule_day, schedule_time)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   values ('$cys','$subject_code','$semester','$academic_year','$schedule_day','$schedule_time')";
   if ($conn->query($sql)){
     header("location: index.php");
@@ -56,6 +65,11 @@ else{
   if ($conn->query($sql)){
     header("location: cclass.php");
 >>>>>>> CRUD for student_class and take_attendance
+=======
+  values ('$section','$subject_code','$semester','$academic_year','$schedule_day','$schedule_time')";
+  if ($conn->query($sql)){
+    header("location: cclass.php");
+>>>>>>> Updated
   }
   else{
     echo "Error: ". $sql ."

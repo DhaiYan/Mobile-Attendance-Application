@@ -24,10 +24,18 @@ $db = mysqli_connect('localhost','root','','attendance');
 if(isset($_POST['update']))
 {
 	$id = $_POST['id'];
+<<<<<<< HEAD
 	$id_number = $_POST['id_number'];
 	$class_id = $_POST['class_id'];
 	
 	$result = mysqli_query($db, "UPDATE student_class SET id_number='$id_number', class_id='$class_id' WHERE id_number='$id'");
+=======
+	$number = $_POST['number'];
+	$id_number = $_POST['id_number'];
+	$class_id = $_POST['class_id'];
+	
+	$result = mysqli_query($db, "UPDATE student_class SET id_number='$id_number', class_id='$class_id' WHERE number='$id'");
+>>>>>>> Updated
 	if($result == true){
 		header("Location: student_class.php");
 	}
@@ -40,6 +48,10 @@ $result = mysqli_query($db, "SELECT * FROM student_class WHERE id_number='$id_nu
 
 while($res = mysqli_fetch_array($result))
 {
+<<<<<<< HEAD
+=======
+	$number = $res['number'];
+>>>>>>> Updated
 	$id_number = $res['id_number'];
 	$class_id = $res['class_id'];
 }
@@ -90,6 +102,7 @@ while($res = mysqli_fetch_array($result))
 				</li>
 				<li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<a href="edit.html" title="To-do-List"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</a>
 				</li>
 				<li>
@@ -100,6 +113,18 @@ while($res = mysqli_fetch_array($result))
 				<li>
 					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Take_Attendance</a>
 >>>>>>> CRUD for student_class and take_attendance
+=======
+					<a href="student_class.php" title="To-do-List"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student_Class</a>
+				</li>
+				<li>
+					<a href="take_attendance.php" title="To-do-List"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Take_Attendance</a>
+				</li>
+				<li>
+					<a href="general_reports.php" title="To-do-List"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;General Reports</a>
+				</li>
+				<li>
+					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a>
+>>>>>>> Updated
 				</li>
 				
 			</ul>
@@ -136,18 +161,30 @@ while($res = mysqli_fetch_array($result))
 	
 	<div class="container" style="width:300px">
 		<form method="post" action=""> 
+<<<<<<< HEAD
 		<input name="id" type="hidden" value="<?php echo $id_number;?>"/>
+=======
+		<input name="id" type="hidden" value="<?php echo $number;?>"/>
+>>>>>>> Updated
 			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student Class</font></strong></h1></center>
 			<label>ID Number</label>
 			<select name="id_number" class="form-control" value="<?php echo $id_number;?>" required>
 					<?php while($row = mysqli_fetch_array($query)):?>
+<<<<<<< HEAD
 			  <option value="<?php echo $row['id_number'] ?>"><?php echo $row['id_number'] ?></option>
+=======
+			  <option value="<?php echo $row['id_number'] ?>"><?php echo $row['first_name'] . " " . $row['middle_initial']. " " . $row['last_name']. " " . $row['name_extension']?></option>
+>>>>>>> Updated
 					<?php endwhile;?>
 			</select>
 			<label>Class ID</label> 
 			<select name="class_id" class="form-control" required>
 					<?php while($row = mysqli_fetch_array($query1)):?>
+<<<<<<< HEAD
 			  <option value="<?php echo $row['class_id'] ?>"><?php echo $row['class_id'] ?></option>
+=======
+			  <option value="<?php echo $row['class_id'] ?>"><?php echo $row['section'] . ' ' . '(' . $row['subject_code'] . ')'?></option>
+>>>>>>> Updated
 					<?php endwhile;?>
 			</select>
 			<center><input class="btn btn-dark" name="update" type="submit" value="Save"></button></center>

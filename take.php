@@ -1,16 +1,16 @@
 <?php
-
+	$code = $_GET['class'];
 	if(isset($_POST['btn_search']))
 	{
     $search = $_POST['search'];
 		// search in all table columns
 		// using concat mysql function
-		$query = "SELECT * FROM `subject` WHERE CONCAT(`subject_code`, `subject_title`) LIKE '%".$search."%'";
+		$query = "SELECT * FROM `student` WHERE CONCAT(`id_number`, `first_name`, `middle_initial`, `last_name`, `name_extension`) LIKE '%".$search."%'";
 		$search_result = filterTable($query);
     
 	}
 	else {
-		$query = "SELECT * FROM `subject`";
+		$query = "SELECT * FROM class, student_class, student WHERE class.class_id = '$code' AND student_class.class_id = '$code' AND student_class.id_number = student.id_number";
 		$search_result = filterTable($query);
 	}
 
@@ -26,7 +26,7 @@
 
 
 <head>
-	<title>subject</title>
+	<title>Add</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/x-icon" href="picture/attendance.jpg" />
@@ -67,19 +67,6 @@
 					<a href="cstudent.php" title="Go to Student"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student</a>
 				</li>
 				<li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-					<a href="edit.html" title="To-do-List"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</a>
-				</li>
-				<li>
-					<a href="edit.html" title="To-do-List"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a>
-=======
-					<a href="student_class.php" title="To-do-List"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student_Class</a>
-				</li>
-				<li>
-					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Take_Attendance</a>
->>>>>>> CRUD for student_class and take_attendance
-=======
 					<a href="student_class.php" title="To-do-List"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student_Class</a>
 				</li>
 				<li>
@@ -90,7 +77,6 @@
 				</li>
 				<li>
 					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a>
->>>>>>> Updated
 				</li>
 				
 			</ul>
@@ -125,42 +111,32 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
-	<div class="container" style="width:300px">
-		<form method="post" action="addsubject.php"> 
-			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Subject</font></strong></h1></center>
-			<label>Subject Code</label>
-			<input type="text" class="form-control" id="subject_code" placeholder="Enter Subject Code" name="subject_code" required>
-			<label>Subject Title</label> 
-			<input type="text" class="form-control" id="subject_title" placeholder="Enter Subject Title" name="subject_title" required><br/>
-			<center><input class="btn btn-dark" type="submit" value="Save"></button></center>
-		</form>
-	</div>
-	
 	<div class="container">
-			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Subject</font></strong></h1></center>
+			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student</font></strong></h1></center>
 			<div class="container">          
   <table class="table">
     <thead>
       <tr>
-		<th>Subject_Code:</th>
-        <th>Subject_Title:</th>
-		<th>Action:</th>	
+		<th>ID Number:</th>
+        <th>First Name:</th>
+		<th>Middle Initial:</th>
+        <th>Last Name:</th>
+		<th>Name Extension:</th>
+		<th>Remark:</th>	
       </tr>
     </thead>
 	<?php while($row = mysqli_fetch_array($search_result)):?>
     <tbody>
       <tr>
-        <td><?php echo $row['subject_code'];?></td>
-		<td><?php echo $row['subject_title'];?></td>
-		<td><div class="btn-group" role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="False">
-      Dropdown
-    </button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="delete.php?subject_code=<?php echo $row["subject_code"]; ?>">Delete</a>
-      <a class="dropdown-item" href="edit.php?subject_code=<?php echo $row["subject_code"]; ?>">Update</a>
-    </div>
-  </div></td>
+        <td><?php echo $row['id_number'];?></td>
+		<td><?php echo $row['first_name'];?></td>
+		<td><?php echo $row['middle_initial'];?></td>
+		<td><?php echo $row['last_name'];?></td>
+		<td><?php echo $row['name_extension'];?></td>
+		<td><input type ="radio">Present</td>
+		<td><input type ="radio">Absent</td>
+		<td><input type ="radio">Late</td>
+		<td><input type ="radio">Excuse</td>
         
       </tr>
 	  </tbody>
@@ -168,7 +144,6 @@
 	 </table>
 	</div>	
 	</div>
-	
 	
 
 
