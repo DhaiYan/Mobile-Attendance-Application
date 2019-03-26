@@ -19,19 +19,7 @@ else{
   $sql = "INSERT INTO subject (subject_code, subject_title)
   values ('$subject_code','$subject_title')";
   if ($conn->query($sql)){
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    header("location: index.php");
-=======
     header("location: csubject.php");
->>>>>>> updated
-=======
-    header("location: csubject.php");
->>>>>>> CRUD for student_class and take_attendance
-=======
-    header("location: csubject.php");
->>>>>>> Updated
   }
   else{
     echo "Error: ". $sql ."

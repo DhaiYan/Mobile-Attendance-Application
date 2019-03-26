@@ -39,10 +39,6 @@ $query1 = mysqli_query($conn,$sql1);
 		return $filter_Result;
 	}
 ?>
-<<<<<<< HEAD
-=======
-
->>>>>>> Updated
 <!DOCTYPE html>
 
 
@@ -76,7 +72,7 @@ $query1 = mysqli_query($conn,$sql1);
 				</li>
 				<br>
 				<li>
-					<a href="index.php" title="Go to Class"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
+					<a href="home.php" title="Go to Class"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
 				</li>
 				<li>
 					<a href="cclass.php" title="Go to Class"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class</a>
@@ -88,19 +84,6 @@ $query1 = mysqli_query($conn,$sql1);
 					<a href="cstudent.php" title="Go to Student"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student</a>
 				</li>
 				<li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-					<a href="edit.html" title="To-do-List"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</a>
-				</li>
-				<li>
-					<a href="edit.html" title="To-do-List"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a>
-=======
-					<a href="student_class.php" title="To-do-List"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student_Class</a>
-				</li>
-				<li>
-					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Take_Attendance</a>
->>>>>>> CRUD for student_class and take_attendance
-=======
 					<a href="student_class.php" title="To-do-List"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student_Class</a>
 				</li>
 				<li>
@@ -111,7 +94,6 @@ $query1 = mysqli_query($conn,$sql1);
 				</li>
 				<li>
 					<a href="take_attendance.html" title="To-do-List"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a>
->>>>>>> Updated
 				</li>
 				
 			</ul>
@@ -150,51 +132,19 @@ $query1 = mysqli_query($conn,$sql1);
 		<form method="post" action="addsc.php"> 
 			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student Class</font></strong></h1></center>
 			<label>ID Number</label>
-<<<<<<< HEAD
-			<select name="id_number" class="form-control" required>
-					<?php while($row = mysqli_fetch_array($query)):?>
-			  <option value="<?php echo $row['id_number'] ?>"><?php echo $row['id_number'] ?></option>
-=======
-			<select name="id_number[]" class="form-control" multiple="multiple">
+			<select name="id_number" class="form-control" multiple="multiple">
 					<?php while($row = mysqli_fetch_array($query)):?>
 			  <option value="<?php echo $row['id_number'] ?>"><?php echo $row['first_name'] . " " . $row['middle_initial']. " " . $row['last_name']. " " . $row['name_extension']?></option>
->>>>>>> Updated
 					<?php endwhile;?>
 			</select>
 			<label>Class ID</label> 
 			<select name="class_id" class="form-control" required>
 					<?php while($row = mysqli_fetch_array($query1)):?>
-<<<<<<< HEAD
-			  <option value="<?php echo $row['class_id'] ?>"><?php echo $row['class_id'] ?></option>
-=======
 			  <option value="<?php echo $row['class_id'] ?>"><?php echo $row['section'] . ' ' . '(' . $row['subject_code'] . ')'?></option>
->>>>>>> Updated
 					<?php endwhile;?>
 			</select>
 			<center><input class="btn btn-dark" type="submit" value="Save"></button></center>
 		</form>
-<<<<<<< HEAD
-=======
-		<?php
-		$db = mysqli_connect ("localhost","root","","attendance");
-		$id_number = '';
-		if(!$db)
-		{
-			die("Error!");
-		}
-		
-		$id_number = $_POST['id_number'];
-		
-		if($id_number)
-		{
-			foreach ($id_number as $c){
-				mysqli_query($db, "INSERT INTO student_class('class_id','id_number') values('".$class_id."','".mysqli_real_escape_string($db,$c)."')");
-			}
-		}
-		$class_id = 0;
-		
-		?>
->>>>>>> Updated
 	</div>
 	
 	<div class="container">
@@ -218,11 +168,7 @@ $query1 = mysqli_query($conn,$sql1);
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-<<<<<<< HEAD
-      <a class="dropdown-item" href="dsc.php?id_number=<?php echo $row["id_number"]; ?>">Delete</a>
-=======
       <a class="dropdown-item" href="dsc.php?number=<?php echo $row["number"]; ?>">Delete</a>
->>>>>>> Updated
       <a class="dropdown-item" href="esc.php?id_number=<?php echo $row["id_number"]; ?>">Update</a>
     </div>
   </div></td>
