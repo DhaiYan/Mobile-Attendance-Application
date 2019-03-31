@@ -1,16 +1,16 @@
 <?php
-	$code = $_GET['class'];
+
 	if(isset($_POST['btn_search']))
 	{
     $search = $_POST['search'];
 		// search in all table columns
 		// using concat mysql function
-		$query = "SELECT * FROM `student` WHERE CONCAT(`id_number`, `first_name`, `middle_initial`, `last_name`, `name_extension`) LIKE '%".$search."%'";
+		$query = "SELECT * FROM `class` WHERE CONCAT(`class_id`, `section`, `subject_code`, `semester`, `academic_year`, `schedule_day`, `schedule_time`) LIKE '%".$search."%'";
 		$search_result = filterTable($query);
     
 	}
 	else {
-		$query = "SELECT * FROM class, student_class, student WHERE class.class_id = '$code' AND student_class.class_id = '$code' AND student_class.id_number = student.id_number";
+		$query = "SELECT * FROM `class`";
 		$search_result = filterTable($query);
 	}
 
@@ -26,7 +26,7 @@
 
 
 <head>
-	<title>Add</title>
+	<title>index</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/x-icon" href="picture/attendance.jpg" />
@@ -105,48 +105,46 @@
         </div>
 
     </div>
-    
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 	<div class="container">
-			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student</font></strong></h1></center>
+			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Class</font></strong></h1></center>
 			<div class="container">          
   <table class="table">
     <thead>
       <tr>
-		<th>ID Number:</th>
-        <th>First Name:</th>
-		<th>Middle Initial:</th>
-        <th>Last Name:</th>
-		<th>Name Extension:</th>
-		<th>Remark:</th>	
+		<th>Class_ID:</th>
+        <th>Course, Year, and Section:</th>
+		<th>Subject_Code:</th>
+		<th>Semester:</th>
+        <th>Academic_Year:</th>
+		<th>Schedule_Day:</th>
+		<th>Schedule_Time:</th>
       </tr>
     </thead>
 	<?php while($row = mysqli_fetch_array($search_result)):?>
     <tbody>
       <tr>
-        <td><?php echo $row['id_number'];?></td>
-		<td><?php echo $row['first_name'];?></td>
-		<td><?php echo $row['middle_initial'];?></td>
-		<td><?php echo $row['last_name'];?></td>
-		<td><?php echo $row['name_extension'];?></td>
-		<td><input type ="radio">Present</td>
-		<td><input type ="radio">Absent</td>
-		<td><input type ="radio">Late</td>
-		<td><input type ="radio">Excuse</td>
-        
+        <td><?php echo $row['class_id'];?></td>
+		<td><?php echo $row['section'];?></td>
+		<td><?php echo $row['subject_code'];?></td>
+		<td><?php echo $row['semester'];?></td>
+		<td><?php echo $row['academic_year'];?></td>
+		<td><?php echo $row['schedule_day'];?></td>
+		<td><?php echo $row['schedule_time'];?></td>
       </tr>
 	  </tbody>
 	  <?php endwhile;?>
 	 </table>
 	</div>	
 	</div>
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
-
-
+	
+	
 </body>
 
 </html>

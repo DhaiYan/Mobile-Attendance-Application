@@ -1,25 +1,23 @@
 <?php
-	if(isset($_POST['btn_search']))
-	{
-    $search = $_POST['search'];
-		// search in all table columns
-		// using concat mysql function
-		$query = "SELECT * FROM `class` WHERE CONCAT(`class_id`, `section`, `subject_code`, `semester`, `academic_year`, `schedule_day`, `schedule_time`,) LIKE '%".$search."%'";
-		$search_result = filterTable($query);
-    
-	}
-	else {
-		$query = "SELECT * FROM `class`";
-		$search_result = filterTable($query);
-	}
+	$con = mysqli_connect('localhost', 'root', '', 'attendance');
+	$class_id = isset($_GET['class_id'])? $_GET['class_id']:null;
+	$query = '
+	Select 
+		student.id_number,  
+		class.class_id, 
+		CONCAT(student.last_name, " ", student.first_name," ",student.middle_initial, " ", student.name_extension ) as Name, 
+		take_attendance.time_stamp, 
+		take_attendance.status
+	FROM
+		student, take_attendance , class
+	WHERE
+		student.id_number = take_attendance.id_number AND
+			take_attendance.class_id = class.class_id AND
+			class.class_id ='. $class_id; 
+	$result = mysqli_query($con, $query);
 
-	// function to connect and execute the query
-	function filterTable($query)
-	{
-		$connect = mysqli_connect("localhost", "root", "", "attendance");
-		$filter_Result = mysqli_query($connect, $query);
-		return $filter_Result;
-	}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +31,7 @@ body	{
 </style>
 
 <head>
-	<title>Class View</title>
+	<title>Take View</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/x-icon" href="picture/attendance.jpg" />
@@ -58,7 +56,7 @@ body	{
 				<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
-					<img src="img/attendance.png" />>
+					<img src="img/attendance.png" />
 				</li>
 				<br>
 				<li>
@@ -90,7 +88,8 @@ body	{
 		</div>
 
 		
-         <div id="page-content-wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
             <div class="container-fluid">
 				<!-- Menu -->
 				<nav class="navbar navbar-green">
@@ -113,44 +112,32 @@ body	{
     </div>
 	<div class ="container">
 	<table class="table">
-  <thead>
-    <tr>
-		</br></br></br></br>
-	  <tr bgcolor='gray'>
-      <th>Class ID</th>
-	  <th>Section & Year</th>
-      <th>Subject Code</th>
-	  <th>Semester</th>
-	  <th>Academic Year</th>
-	  <th>Schedule Day</th>
-	  <th>Schedule Time</th>
-	  <th>Action</th>
-	  
-    </tr>
-  </thead>
-  <?php while($row = mysqli_fetch_array($search_result)):?>
-  <tbody>
-    <tr>
-		<td><?php echo $row['class_id'];?></td>
-		<td><?php echo $row['section'];?></td>
-		<td><?php echo $row['subject_code'];?></td>
-		<td><?php echo $row['semester'];?></td>
-		<td><?php echo $row['academic_year'];?></td>
-		<td><?php echo $row['schedule_day'];?></td>
-		<td><?php echo $row['schedule_time'];?></td>
-		
-		
-	 <td>
-	 <a href ="save_attendance.php?class_id=<?php echo $row['class_id'];?>"><button type="button" class="btn btn-dark">Take</button></a></td>
+		<thead>
+			<tr>
+				<th>ID Number</th>
+				<th>Class ID</th>
+				<th>Name</th>
+				<th>Timestamp</th> 
+				<th>Remarks</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				while($row = mysqli_fetch_assoc($result)){
+			?>
+				<tr>
+					<td><?php echo $row["id_number"] ?></td>
+					<td><?php echo $row["class_id"] ?></td>
+					<td><?php echo $row["Name"] ?></td>
+					<td><?php echo $row["time_stamp"] ?></td>
+					<td><?php echo $row["status"] ?></td>
+				</tr>
 
-</td>
-
-</tr>
-			
-  </tbody>
-  <?php endwhile;?>
-</div>
-
+			<?php
+				}
+			?>
+		</tbody>
+	</table> 
 </body>
 
 </html>

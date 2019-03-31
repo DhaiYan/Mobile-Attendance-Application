@@ -128,7 +128,7 @@ while($res = mysqli_fetch_array($result))
 		<input name="id" type="hidden" value="<?php echo $id_number;?>"/>
 			<center><h1><strong><font color="#ff80aa" face="Cooper Std Black">Student</font></strong></h1></center>
 			<label>ID Number</label> 
-			<input type="text" class="form-control" value="<?php echo $id_number;?>" id="id_number" placeholder="Enter ID Number" name="id_number" required>
+			<input type="text" readonly class="form-control" value="<?php echo $id_number;?>" id="id_number" placeholder="Enter ID Number" name="id_number" required>
 			<label>First Name</label>
 			<input type="text" class="form-control" value="<?php echo $first_name;?>" id="first_name" placeholder="Enter First Name" name="first_name" required>
 			<label>Middle Initial</label> 
@@ -145,7 +145,7 @@ while($res = mysqli_fetch_array($result))
 			  <option value="III">III</option>
 			  <option value="Other">Other...</option>
 			</select>
-			<center><input class="btn btn-dark" name="update" type="submit" value="Save"></button></center>
+			<center><input class="btn btn-dark" name="update" type="submit" value="Save" /></center>
 		</form>
 	</div>
 	

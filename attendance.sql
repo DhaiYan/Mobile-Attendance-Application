@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2019 at 08:20 PM
+-- Generation Time: Mar 29, 2019 at 08:41 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -46,7 +46,8 @@ INSERT INTO `class` (`class_id`, `section`, `subject_code`, `semester`, `academi
 (12, 'BSIT-3A', 'IT-36', 'Second Semester', '2018-2019', 'TTH', '08:30-10:00'),
 (13, 'BSIT-3A', 'IT-37', 'Second Semester', '2018-2019', 'MWF', '08:30-10:00 08:00-11:00'),
 (14, 'BSIT-3A', 'IT-38', 'Second Semester', '2018-2019', 'MW', '10:00-11:30 01:00-04:00'),
-(15, 'BSIT-3A', 'MATH 36', 'Second Semester', '2018-2019', 'TTH', '07:00-08:30');
+(15, 'BSIT-3A', 'MATH 36', 'Second Semester', '2018-2019', 'TTH', '07:00-08:30'),
+(17, 'BSIT-4', 'Intern', 'First Semester', '2019-2020', 'mtwthf', '08:00-05:00');
 
 -- --------------------------------------------------------
 
@@ -68,9 +69,10 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`id_number`, `first_name`, `middle_initial`, `last_name`, `name_extension`) VALUES
 ('1110534', 'Diane', 'B', 'CordeÃ±o', ''),
-('1234567', 'Dhai', '', 'Yan', ''),
-('2017-00205', 'Yan', '', 'CordeÃ±o', ''),
-('7654321', 'Da', '', 'Yang', '');
+('2017', 'Mae Joy', 'A', 'Mocay', ''),
+('2017-0013', 'Elmie Joy', 'L', 'Adorable', ''),
+('2017-0014', 'Julie Jane', '', 'Dumon', ''),
+('2017-7102', 'Kenna Lou', 'A', 'Eseos', '');
 
 -- --------------------------------------------------------
 
@@ -89,11 +91,11 @@ CREATE TABLE `student_class` (
 --
 
 INSERT INTO `student_class` (`number`, `id_number`, `class_id`) VALUES
-(3, '1234567', 10),
-(4, '2017-00205', 10),
-(5, '7654321', 10),
-(6, '1110534', 10),
-(7, '1110534', 13);
+(9, '1110534', 10),
+(10, '2017', 10),
+(11, '2017-0013', 10),
+(12, '2017-0014', 15),
+(13, '2017-7102', 15);
 
 -- --------------------------------------------------------
 
@@ -111,8 +113,7 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`subject_code`, `subject_title`) VALUES
-('FAV', 'RECESS TIME'),
-('FAV1', 'LUNCH BREAK'),
+('Intern', 'Internship 1'),
 ('IT-34', 'Database  Management 2'),
 ('IT-35', 'OOP 1'),
 ('IT-36', 'MIS'),
@@ -129,7 +130,8 @@ INSERT INTO `subject` (`subject_code`, `subject_title`) VALUES
 CREATE TABLE `take_attendance` (
   `id_number` varchar(20) DEFAULT NULL,
   `time_stamp` varchar(15) DEFAULT NULL,
-  `class_id` int(11) DEFAULT NULL
+  `class_id` int(11) DEFAULT NULL,
+  `status` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -178,12 +180,12 @@ ALTER TABLE `take_attendance`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `student_class`
 --
 ALTER TABLE `student_class`
-  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Constraints for dumped tables
 --
