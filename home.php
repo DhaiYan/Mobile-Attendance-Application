@@ -112,6 +112,7 @@
   <table class="table">
     <thead>
       <tr>
+<<<<<<< HEAD
 		<th>Class_ID:</th>
         <th>Course, Year, and Section:</th>
 		<th>Subject_Code:</th>
@@ -119,6 +120,15 @@
         <th>Academic_Year:</th>
 		<th>Schedule_Day:</th>
 		<th>Schedule_Time:</th>
+=======
+		<th>Class ID</th>
+        <th>Course, Year, and Section</th>
+		<th>Subject Code</th>
+		<th>Semester</th>
+        <th>Academic Year</th>
+		<th>Schedule Day</th>
+		<th>Schedule Time</th>
+>>>>>>> Update for finalization
       </tr>
     </thead>
 	<?php while($row = mysqli_fetch_array($search_result)):?>

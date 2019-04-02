@@ -88,18 +88,31 @@ $class_id = isset($_GET['class_id']) ?  $_GET['class_id'] : null;
     </div>
 	<div class="container">
 	
+<<<<<<< HEAD
 		<button type="button" class="btn btn-primary" id="save_attendance">Save Attendance</button> 
 		<input type="hidden" id="class_id" value="<?php echo isset($_GET['class_id']) ? $_GET['class_id'] : null?>">
 		<div class="form-group">
 			<label for="time">Time</label>
+=======
+		<button type="button" class="btn btn-dark" id="save_attendance">Save Attendance</button> 
+		<input type="hidden" id="class_id" value="<?php echo isset($_GET['class_id']) ? $_GET['class_id'] : null?>">
+		<div class="form-group">
+			<label for="time">Time Stamp</label>
+>>>>>>> Update for finalization
 			<input type="text" class="form-control" id="time">
 		</div>
 		<table  class="table">
 			<tr>
 			  <th>ID Number</th>
+<<<<<<< HEAD
 			  <th>Last Name</th>
 			  <th>First Name</th>
 			  <th>Middle Initial</th>
+=======
+			  <th>First Name</th>
+			  <th>Middle Initial</th>
+			  <th>Last Name</th>
+>>>>>>> Update for finalization
 			  <th>Name Extension</th> 
 			  <th>Status</th>
 			</tr>
@@ -127,8 +140,13 @@ $class_id = isset($_GET['class_id']) ?  $_GET['class_id'] : null;
 			<tr>
 				<td><?php echo $row['id_number'];?></td>
 				<td><?php echo $row['first_name'];?></td>
+<<<<<<< HEAD
 				<td><?php echo $row['last_name'];?></td>
 				<td><?php echo $row['middle_initial'];?></td>
+=======
+				<td><?php echo $row['middle_initial'];?></td>
+				<td><?php echo $row['last_name'];?></td>
+>>>>>>> Update for finalization
 				<td><?php echo $row['name_extension'];?></td>
 				<td>
 					<label class="radio-inline">

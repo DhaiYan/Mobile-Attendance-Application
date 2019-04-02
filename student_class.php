@@ -153,9 +153,14 @@ $query1 = mysqli_query($conn,$sql1);
   <table class="table">
     <thead>
       <tr>
+<<<<<<< HEAD
 		<th>ID Number:</th>
         <th>Class Number:</th>
 		<th>Action:</th>	
+=======
+		<th>ID Number</th>
+        <th>Class Number</th>
+>>>>>>> Update for finalization
       </tr>
     </thead>
 	<?php while($row = mysqli_fetch_array($search_result)):?>
@@ -165,7 +170,11 @@ $query1 = mysqli_query($conn,$sql1);
 		<td><?php echo $row['class_id'];?></td>
 		<td><div class="btn-group" role="group">
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="False">
+<<<<<<< HEAD
       Dropdown
+=======
+      Action
+>>>>>>> Update for finalization
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
       <a class="dropdown-item" href="dsc.php?number=<?php echo $row["number"]; ?>">Delete</a>

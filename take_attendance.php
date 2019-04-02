@@ -141,7 +141,12 @@ body	{
 		
 		
 	 <td>
+<<<<<<< HEAD
 	 <a href ="save_attendance.php?class_id=<?php echo $row['class_id'];?>"><button type="button" class="btn btn-dark">Take</button></a></td>
+=======
+	 <a href ="save_attendance.php?class_id=<?php echo $row['class_id'];?>"><button type="button" class="btn btn-dark">Take</button></a>
+	 <a href ="takeview.php?class_id=<?php echo $row['class_id'];?>"><button type="button" class="btn btn-dark">View</button></a></td>
+>>>>>>> Update for finalization
 
 </td>
 

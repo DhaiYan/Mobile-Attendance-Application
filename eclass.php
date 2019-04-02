@@ -171,7 +171,11 @@ while($res = mysqli_fetch_array($result))
 			<input type="text" class="form-control" value="<?php echo $schedule_day;?>" id="schedule_day" placeholder="Enter Schedule Day" name="schedule_day" required>
 			<label>Schedule Time</label> 
 			<input type="text" class="form-control" value="<?php echo $schedule_time;?>"  placeholder="Enter Schedule Time" name="schedule_time" required>
+<<<<<<< HEAD
 			<center><input class="btn btn-dark" name="update" type="submit" value="UPDATE"></button></center>
+=======
+			<center><input class="btn btn-dark" name="update" type="submit" value="Save"></button></center>
+>>>>>>> Update for finalization
 		</form>
 	</div>
 	

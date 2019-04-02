@@ -161,6 +161,7 @@ $query1 = mysqli_query($conn,$sql);
   <table class="table">
     <thead>
       <tr>
+<<<<<<< HEAD
 		<th>Class_ID:</th>
         <th>Course, Year, and Section:</th>
 		<th>Subject_Code:</th>
@@ -168,6 +169,15 @@ $query1 = mysqli_query($conn,$sql);
         <th>Academic_Year:</th>
 		<th>Schedule_Day:</th>
 		<th>Schedule_Time:</th>
+=======
+		<th>Class ID</th>
+        <th>Course, Year, and Section</th>
+		<th>Subject Code</th>
+		<th>Semester</th>
+        <th>Academic Year</th>
+		<th>Schedule Day</th>
+		<th>Schedule Time</th>
+>>>>>>> Update for finalization
       </tr>
     </thead>
 	<?php while($row = mysqli_fetch_array($search_result)):?>
@@ -182,7 +192,11 @@ $query1 = mysqli_query($conn,$sql);
 		<td><?php echo $row['schedule_time'];?></td>
 		<td><div class="btn-group" role="group">
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="False">
+<<<<<<< HEAD
       Dropdown
+=======
+      Action
+>>>>>>> Update for finalization
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
       <a class="dropdown-item" href="dclass.php?class_id=<?php echo $row["class_id"]; ?>">Delete</a>

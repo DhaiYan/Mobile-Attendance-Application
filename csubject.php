@@ -128,9 +128,14 @@
   <table class="table">
     <thead>
       <tr>
+<<<<<<< HEAD
 		<th>Subject_Code:</th>
         <th>Subject_Title:</th>
 		<th>Action:</th>	
+=======
+		<th>Subject Code</th>
+        <th>Subject Title</th>
+>>>>>>> Update for finalization
       </tr>
     </thead>
 	<?php while($row = mysqli_fetch_array($search_result)):?>
@@ -140,7 +145,11 @@
 		<td><?php echo $row['subject_title'];?></td>
 		<td><div class="btn-group" role="group">
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="False">
+<<<<<<< HEAD
       Dropdown
+=======
+      Action
+>>>>>>> Update for finalization
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
       <a class="dropdown-item" href="delete.php?subject_code=<?php echo $row["subject_code"]; ?>">Delete</a>

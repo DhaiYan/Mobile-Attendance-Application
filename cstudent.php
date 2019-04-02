@@ -143,12 +143,20 @@
   <table class="table">
     <thead>
       <tr>
+<<<<<<< HEAD
 		<th>ID Number:</th>
         <th>First Name:</th>
 		<th>Middle Initial:</th>
         <th>Last Name:</th>
 		<th>Name Extension:</th>
 		<th>Action:</th>	
+=======
+		<th>ID Number</th>
+        <th>First Name</th>
+		<th>Middle Initial</th>
+        <th>Last Name</th>
+		<th>Name Extension</th>
+>>>>>>> Update for finalization
       </tr>
     </thead>
 	<?php while($row = mysqli_fetch_array($search_result)):?>
@@ -161,7 +169,11 @@
 		<td><?php echo $row['name_extension'];?></td>
 		<td><div class="btn-group" role="group">
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="False">
+<<<<<<< HEAD
       Dropdown
+=======
+      Action
+>>>>>>> Update for finalization
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
       <a class="dropdown-item" href="dstudent.php?id_number=<?php echo $row["id_number"]; ?>">Delete</a>

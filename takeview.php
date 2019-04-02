@@ -5,7 +5,11 @@
 	Select 
 		student.id_number,  
 		class.class_id, 
+<<<<<<< HEAD
 		CONCAT(student.last_name, " ", student.first_name," ",student.middle_initial, " ", student.name_extension ) as Name, 
+=======
+		CONCAT(student.first_name, " ", student.middle_initial," ",student.last_name, " ", student.name_extension ) as Name, 
+>>>>>>> Update for finalization
 		take_attendance.time_stamp, 
 		take_attendance.status
 	FROM
